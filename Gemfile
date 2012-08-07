@@ -23,8 +23,7 @@ end
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem "paperclip", "~> 3.0"
-gem 'paperclipdropbox'
-gem 'dropbox'
+gem 'pg'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
