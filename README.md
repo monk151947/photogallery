@@ -1,4 +1,6 @@
 photostudio
 ===========
 
- Photo Studio 
+ Photo gallery with tags
+ Demo :
+ http://imagegallery.herokuapp.com/  
