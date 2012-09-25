@@ -1,4 +1,6 @@
 SmartSearch::Application.routes.draw do
+  get 'tags/:tag', to: 'searchapps#index', as: :tag
+
   resources :searchapps
 
   # The priority is based upon order of creation:

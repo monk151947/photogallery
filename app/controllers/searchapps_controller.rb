@@ -1,17 +1,14 @@
 class SearchappsController < ApplicationController
-  # GET /searchapps
-  # GET /searchapps.json
+ 
   def index
-    @searchapps = Searchapp.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @searchapps }
+    if params[:tag]
+      @searchapps = Searchapp.tagged_with(params[:tag])
+    else
+      @searchapps = Searchapp.all
     end
   end
 
-  # GET /searchapps/1
-  # GET /searchapps/1.json
+  
   def show
     @searchapp = Searchapp.find(params[:id])
 
@@ -21,8 +18,6 @@ class SearchappsController < ApplicationController
     end
   end
 
-  # GET /searchapps/new
-  # GET /searchapps/new.json
   def new
     @searchapp = Searchapp.new
    # 5.times { @searchapp.assets.build }
@@ -32,20 +27,19 @@ class SearchappsController < ApplicationController
     end
   end
 
-  # GET /searchapps/1/edit
+
   def edit
     @searchapp = Searchapp.find(params[:id])
     #5.times { @searchapp.assets.build }
   end
 
-  # POST /searchapps
-  # POST /searchapps.json
+
   def create
     @searchapp = Searchapp.new(params[:searchapp])
 
     respond_to do |format|
       if @searchapp.save
-        format.html { redirect_to @searchapp, notice: 'Searchapp was successfully created.' }
+        format.html { redirect_to searchapps_path, notice: 'Searchapp was successfully created.' }
         format.json { render json: @searchapp, status: :created, location: @searchapp }
       else
         format.html { render action: "new" }
@@ -54,8 +48,7 @@ class SearchappsController < ApplicationController
     end
   end
 
-  # PUT /searchapps/1
-  # PUT /searchapps/1.json
+
   def update
     @searchapp = Searchapp.find(params[:id])
 
@@ -70,8 +63,7 @@ class SearchappsController < ApplicationController
     end
   end
 
-  # DELETE /searchapps/1
-  # DELETE /searchapps/1.json
+  
   def destroy
     @searchapp = Searchapp.find(params[:id])
     @searchapp.destroy

@@ -2,34 +2,34 @@
 <div class="page-header">
 </div>
 <div class="container"  style="display:inline;">
-<ul class="thumbnails">
-
-<% @searchapps.each do |searchapp| %>
-   <li class="span3">
-
-   <div class="thumbnail">
-   <% searchapp.assets.each do |asset| %>
-      <%= link_to image_tag(asset.asset(:thumb)), asset.asset.url %>
-       <%#= number_to_human_size(asset.asset.size) %>
-       <% end %>
-  <div class="caption">
-  <h5><%= searchapp.file_name %></h5>
-  <p><%= searchapp.content %></p>
-
-<table>
-<tr>
-<td><%= button_to "Show", searchapp, class: "btn btn", method: :get%></td>
-<td><%= button_to "edit", edit_searchapp_path(searchapp), class: "btn btn-primary", method: :get %></td>
-<td><%= button_to 'Delete', searchapp ,class: "btn btn-danger", method: :delete, confirm: 'Are you sure?' %></td>
-</tr>
-</table>
-
+  <ul class="thumbnails">
+    <% @searchapps.each do |searchapp| %>
+      <li class="span4">
+        <div class="thumbnail">
+          <% searchapp.assets.each do |asset| %>
+            <%= link_to image_tag(asset.asset(:thumb)), asset.asset.url %>
+            <%#= number_to_human_size(asset.asset.size) %>
+          <% end %>
+          <div class="caption">
+            <h5><%= searchapp.file_name %></h5>
+            <p><%= searchapp.content %></p>
+             <p>Tags: <%= raw searchapp.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+            <div class="btn-group">
+              <%= link_to(searchapp, :class => 'btn btn-info') do %> Show<i class="icon-list icon-white"></i>
+              <% end %>
+              <%= link_to(edit_searchapp_path(searchapp), :class => 'btn btn-primary') do %>
+                Edit<i class="icon-edit icon-white"></i>
+              <% end %>
+              <%= link_to(searchapp, method: :delete, :class => 'btn btn-danger') do %>
+                Delete<i class="icon-remove-sign icon-white"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 </div>
-</li>
-
+<%= link_to( new_searchapp_path, :class => 'btn btn-success') do %>
+  New <i class="icon-plus-sign icon-white"></i>
 <% end %>
-</ul>
-</div>
-
-<div class="btn btn-success"><i class="icon-plus"></i><%= link_to 'New Album', new_searchapp_path %></div>
-
