@@ -1,4 +1,6 @@
 SmartSearch::Application.routes.draw do
+  devise_for :users
+
   get 'tags/:tag', to: 'searchapps#index', as: :tag
 
   resources :searchapps

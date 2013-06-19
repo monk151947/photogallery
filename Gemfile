@@ -7,7 +7,7 @@ gem 'rails', '3.2.6'
 
 gem 'mysql2'
 
-
+gem 'devise', '~> 2.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -25,6 +25,7 @@ gem 'twitter-bootstrap-rails'
 gem "paperclip"
 #gem 'aws-sdk', '~> 1.3.4'
 gem 'pg'
+gem 'thin'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

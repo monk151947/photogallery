@@ -1,5 +1,5 @@
 class SearchappsController < ApplicationController
- 
+ before_filter :authenticate_user!
   def index
     if params[:tag]
       @searchapps = Searchapp.tagged_with(params[:tag])
@@ -8,7 +8,7 @@ class SearchappsController < ApplicationController
     end
   end
 
-  
+
   def show
     @searchapp = Searchapp.find(params[:id])
 
@@ -63,7 +63,7 @@ class SearchappsController < ApplicationController
     end
   end
 
-  
+
   def destroy
     @searchapp = Searchapp.find(params[:id])
     @searchapp.destroy
